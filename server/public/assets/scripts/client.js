@@ -4,7 +4,7 @@ var values = {};
 $(document).ready(function(){
   console.log('This works!');
 
-  $('.clear').on('click').empty();
+  $('.clear').on('click', clearCalc);
 
   $('.addition').on('click', calculate);
   $('.subtraction').on('click', calculate);
@@ -41,20 +41,27 @@ var calculate = function(event){
     data: objEquation,
     success: function(data){
       console.log('Successful ajax POST: ', data);
-      $.ajax({
-        type: 'GET',
-        url: '/answer/',
-        success: function(data){
-            $('#answer').text(data.response);
-            console.log('ANSWER: ',data);
-          }
-        });
+      $('#answer').text(data.response);
+      // $.ajax({
+      //   type: 'GET',
+      //   url: '/answer/',
+      //   success: function(data){
+      //       $('#answer').text(data.response);
+      //       console.log('ANSWER: ',data);
+      //     }
+      //   });
       }
     });
-    $('#calculator')[0].reset();
+    // $('#calculator')[0].reset();
   }
 
-
+  function clearCalc(){
+    values = {};
+    // console.log('Here is values after clear: ', values);
+    $('.answer').text('0');
+    $('#calculator').find('input[type=number]').val('');
+    // console.log('CLICK!');
+  }
 
 
 
