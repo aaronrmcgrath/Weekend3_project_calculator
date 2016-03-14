@@ -1,0 +1,18 @@
+{
+  "name": "weekend3_project_calc",
+  "version": "1.0.0",
+  "description": "Kappa Weekend Project 3 - Calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "author": "Aaron R McGrath",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "jquery": "^2.2.1",
+    "path": "^0.12.7"
+  }
+}
