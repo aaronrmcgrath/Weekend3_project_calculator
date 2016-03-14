@@ -4,7 +4,8 @@
     <title>Kappa Weekend 3 Project - Calculator</title>
 
     <!-- STYLESHEETS -->
-
+    <link rel="stylesheet" href="./vendors/bootstrap.min.css" />
+    <link rel="stylesheet" href="/views/style.css" />
 
     <!-- SCRIPTS -->
     <script type="text/javascript" src="./vendors/jquery.min.js" ></script>
@@ -12,19 +13,32 @@
 
   </head>
   <body>
-    <h1>Hello World!</h1>
+    <h1 class="container jumbotron">Weekend 3 Project: Calculator</h1>
 
     <div class="container">
       <form id="calculator">
-        <input type="text" id="input-one" name="input1" />
-        <input type="text" id="input-two" name="input2" />
-        <button class="addition" >Add</button>
-        <button class="subtraction" >Subtract</button>
-        <button class="multiplication" >Multiply</button>
-        <button class="division" >Divide</button>
+
+        <div class="inputs">
+          <input type="number" id="input1" name="input1" />
+          <input type="number" id="input2" name="input2" />
+        </div>
+
+        <div class="buttons">
+          <button class="addition btn" data-operand="addition" >+</button>
+          <button class="subtraction btn" data-operand="subtraction" >-</button>
+          <button class="multiplication btn" data-operand="multiplication" >*</button>
+          <button class="division btn" data-operand="division" >/</button>
+        </div>
+
       </form>
+
+      <div class="container ce-button">
+        <button class="ce btn-success">CE</button>
+      </div>
+
+      <p class="container answer"id="answer" name="answer">0</p>
+
     </div>
-    <input type="text" id="answer" name="answer" />
 
   </body>
 </html>
