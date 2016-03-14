@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // app.use('/', index);
 
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 5000));
 
 var Equation = function(numX, numY){
   this.numX = numX,
@@ -73,7 +73,7 @@ app.get('/*', function(req,res){
 //     console.log('Listening on port: ' , app.get('port'));
 // });
 
-var server = app.listen(5000, function(){
+var server = app.listen((app.get("port")), function(){
   var port = server.address().port;
     console.log('Listening on port:', port);
 });
