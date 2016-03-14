@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // app.use('/', index);
 
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 3000));
 
 var Equation = function(numX, numY){
   this.numX = numX,
