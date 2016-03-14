@@ -1,7 +1,8 @@
+//Index (catch all router) ---: /server/public/routes/index.js
+
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var addition = require('../modules/addition.js');
 
 router.get('/*', function(req,res){
     var file = req.params[0] || '/views/index.html';

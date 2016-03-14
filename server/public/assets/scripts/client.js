@@ -1,6 +1,8 @@
+//Client ---: /client/client.js
 
 var values = {};
 
+//jQuery that has the listeners for the click events
 $(document).ready(function(){
   console.log('This works!');
 
@@ -11,58 +13,45 @@ $(document).ready(function(){
   $('.multiplication').on('click', calculate);
   $('.division').on('click', calculate);
 
-  });
+});
 
-
+//Captures the inputs and the operand and puts them in an the object: objEquation
+//From there sends a POST to the server to run the logic on the inputs
 var calculate = function(event){
   event.preventDefault();
 
   $.each($("#calculator").serializeArray(), function(i, field){
-      values[field.name] = field.value;
+    values[field.name] = field.value;
   });
 
   var objEquation = {
-      'numX' : values.input1,
-      'numY' : values.input2,
-      'operand' : $(this).data().operand
-    }
+    'numX' : values.input1,
+    'numY' : values.input2,
+    'operand' : $(this).data().operand
+  }
   console.log(objEquation);
-
-  // console.log('This is value: --->', value);
-  // console.log('This is input1.value: ', values.input1);
-  // console.log('This is input2.value: ', values.input2);
-  // console.log('*** This is equation object: ---->>>', objEquation);
-
-  // $('#calculator').find('input[type=text]').val('');
 
   $.ajax({
     type: 'POST',
-    url: '/operand/' + objEquation.operand + '/',
+    url: '/math/' + objEquation.operand,
     data: objEquation,
     success: function(data){
       console.log('Successful ajax POST: ', data);
       $('#answer').text(data.response);
-      // $.ajax({
-      //   type: 'GET',
-      //   url: '/answer/',
-      //   success: function(data){
-      //       $('#answer').text(data.response);
-      //       console.log('ANSWER: ',data);
-      //     }
-      //   });
-      }
-    });
-    // $('#calculator')[0].reset();
-  }
+    }
+  });
+}
 
-  function clearCalc(){
-    values = {};
-    // console.log('Here is values after clear: ', values);
-    $('.answer').text('0');
-    $('#calculator').find('input[type=number]').val('');
-    // console.log('CLICK!');
-  }
+
+//Clears the calculator
+function clearCalc(){
+  values = {};
+  // console.log('Here is values after clear: ', values);
+  $('.answer').text('0');
+  $('#calculator').find('input[type=number]').val('');
+  // console.log('CLICK!');
+}
 
 
 
-//END
+//END_-_-_-_-|
