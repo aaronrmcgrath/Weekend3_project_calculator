@@ -16,30 +16,30 @@ $(document).ready(function(){
   $('.addition').on('click', function(event){
     event.preventDefault();
 
-    // $.each($("#catForm").serializeArray(), function(i, field){
-    //     values[field.name] = field.value;
-    // });
+    $.each($("#calculator").serializeArray(), function(i, field){
+        values[field.name] = field.value;
+    });
 
-    var value = $('#calculator').serializeArray();
-    equation.numX = value[0];
-    equation.numY = value[1];
-    equation.operand = $('button').className;
+    // var value = $('#calculator').serializeArray();
+    // equation.numX = value[0];
+    // equation.numY = value[1];
+    // equation.operand = $('button').className;
 
     // console.log('This is value: --->', value);
-    console.log('This is input1.value: ', value[0].value);
-    console.log('This is input2.value: ', value[1].value);
-    console.log('*** This is equation object: ---->>>', equation);
+    console.log('This is input1.value: ', values.input1);
+    console.log('This is input2.value: ', values.input2);
+    console.log('*** This is equation object: ---->>>', values);
 
-    console.log('numX : ', numX);
-    console.log('numY :', numY);
-    console.log('operand :', operand);
+    // console.log('numX : ', numX);
+    // console.log('numY :', numY);
+    // console.log('operand :', operand);
 
     // $('#calculator').find('input[type=text]').val('');
 
     $.ajax({
       type: 'POST',
       url: '/operand/addition',
-      data: equation,
+      data: values,
       success: function(data){
         console.log('Successful ajax POST: ', data);
         $.ajax({
